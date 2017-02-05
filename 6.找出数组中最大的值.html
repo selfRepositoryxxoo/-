@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var ary = [4, 5, 6, 7, 89, 5];
+    //第一种思想求最大值
+    Array.prototype.max = function () {
+        this.sort(function (a, b) {
+            return a - b
+        })
+        return this[this.length - 1]
+    }
+    console.log(ary.max());
+    //第二种思想 求最小值  假设法
+    Array.prototype.min = function () {
+        var min = this[0];
+        for(var i=1;i<this.length;i++){
+            if(this[i]<=min){
+                min=this[i]
+            }
+        }
+        return min
+    }
+    console.log(ary.min())
+    //第三中思想求最小值 利用Math的方法；
+    console.log(Math.max.apply(null,ary))
+    //第四中思想 利用eval的思想 求最大值 两种转成字符串的 方法
+    console.log(eval('Math.min('+ary.join()+')'))
+    console.log(eval('Math.min('+ary.toString()+')'))
+
+
+</script>

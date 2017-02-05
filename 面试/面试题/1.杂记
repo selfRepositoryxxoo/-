@@ -1,0 +1,203 @@
+1.javascript的继承是如何工作的
+  __proto__    洋葱多的文档
+2.请解释什么是javascript模块模式,并举出实用实例
+3.你是如何组织代码?是实用模块模式,还是使用经典继承的方法
+4.用递归方式写一棵树
+5、获取页面中所有的checkbox,分别用原生和jQuery两种方式
+   原生的：
+6、请写一个函数escapeHtml将<,>,&," 进行转义
+  var escapeHTML=function(str){
+      var map={
+          '>':'&gt;',
+          '<':'&lt;',
+          '&':'&amp;',
+          '"':'&quot;'
+      };
+      for(var p in map){
+          //str=str.replace(new RegExp(p,'g'),map[p]);
+          str=str.replace(new RegExp('^'+p+'$','g'),map[p]);
+      }
+      return str
+  }
+  console.log(escapeHTML('>'));
+7、需求：将字符串"<tr><td>{$id}</td><td>{$name}</td></tr>"中的{$id}替换成10,{$name}替换成Tony (使用正则表达式)
+
+  var str="<tr><td>{$id}</td><td>{$name}</td></tr>",
+      ary=[10,'Tony'];
+  var i=0;
+  str =str.replace(/\{\$\w+\}/ig,function(a,b,c){
+     return  ary[i++]
+  });
+  console.log(str);
+8、事件绑定和普通事件有什么区别
+   绑定一个行为 随时发生一个动作
+
+9、事件委托是什么,其原理是什么?
+   原理 冒泡传播机制 后代元素上的发生的事件 会冒泡到父元素上
+   e.target。。。
+
+10、javascript事件模型有几种,分别是什么,说出他们的区别
+    0级 2级
+    绑定
+
+11、new 操作符具体干了什么
+function New (f) {
+
+   /*1*/
+   var n = { '__proto__': f.prototype };
+
+   return function () {
+      /*2*/
+      f.apply(n, arguments);
+      /*3*/
+      return n;
+   };
+}
+
+12、eval是做什么的?有什么缺点?
+    把字符串语句变成js语句  并执行
+    缺点：字符串避免很多的js语法的规则
+
+13、javascript的错误处理
+    try{} catch（e）{}
+     new Error throw
+
+14、javascript内存泄漏检测手段
+    process.memoryUsage()
+15、对浏览器速度做过哪些优化
+    1、减少HTTP请求
+     ->把CSS/JS文件进行合并压缩(前端压缩一下,服务器做一下GZIP压缩),一个页面只有一个CSS/JS
+     ->在移动端页面开发过程中,如果CSS/JS的代码量不是很多的话,我们尽量使用内嵌式
+     ->数据缓存(localStorage):把我们的CSS/JS代码存储到本地,下一次刷新页面的时候直接的在本地缓存中读取即可,不需要重新的发送HTTP请求了(需要更新可以通过JS的版本号来实现更新)
+
+     [图片]
+     ->CSS SPRITE 把静态的资源图片进行合并,合并到一张大图上,通过POSITION定位找到具体的图片,这样的话只需要发送一次HTTP请求即可
+     ->在移动端能够用代码(SVG)绘制出来的图片我们尽量不使用IMG来做
+     ->图片的延迟加载：首屏图片等到一段时间在进行加载,其它屏幕的图片当页面滚动到对应区域的时候在进行延迟加载
+     ->在迫不得已的情况下,我们的静态资源大图可采用BASE64技术进行编码
+
+     ->数据的异步加载:第一次只请求出部分数据(一般都是一到两屏幕的数据),当我们滚动到的底部的时候在开始加载下面的两屏幕数据(上拉/下拉刷新)
+     ->数据缓存(localStorage):第一次把请求回来的数据保存在自己的本地,在有效时间内,我们刷新页面的时候,只需要把本地的存储数据获取到绑定到页面中即可,不需要重新的发送Ajax请求,直到时间过期,在从新的发送请求,用最新请求的数据替换本地之前存储的数据...
+
+     ->把音视频播放进行延迟加载(PRELOAD='NONE'),在JS中做延迟播放,播放的时候在加载资源;有条件的话可以把音视频都用文件流的方式进行操作;
+
+    2、减少HTTP请求资源的大小
+     ->CSS/JS去除冗余代码(低耦合高内聚) ->雅虎优化34条建议(关于CSS)
+     ->图片尽量压缩
+     ->每一次请求回来的数据尽量少一些,我们可以分批请求
+     ->所有的CSS/JS上传到服务器的都是经过压缩过的
+
+    3、代码优化
+     ->尽量减少不销毁闭包的使用(重点关注一下堆栈内存的释放问题)
+     ->尽量多使用异步编程,少使用同步编程
+
+    移动端开发,能够使用CSS实现的功能最好也不用JS;能够使用CSS3实现的动画,绝对不用JS;能用TransForm实现的动画尽量用它实现(TransForm开启了硬件加速);能够自己使用原生的JS实现的,绝对不用任何的框架或者类库(多人开发,项目偏大,我们在使用相关的框架);
+
+15、less是什么?有什么特点和优势
+    css预处理
+    优势：
+    需要编写的代码量明显减少了。
+    CSS管理更加容易了，在需要更换网站样式风格时尤其如此，此时如果直接重写这些样式，工作量将会非常大，但是使用LESS就很简单，改个全局配置局可以了。
+    LESS的学习成本不是很高，与CSS规则完全融合，如果熟悉CSS，那么你也将会很快驾驭LESS。
+    使用LESS实现配色将变得非常容易。
+    兼容CSS3。
+    与CSS能够很好地融合使用。在LESS代码中可以融入CSS代码，在CSS代码中也可以插入LESS语法。
+16、ajax如何解决跨域问题?跨域有哪些方法?
+    cors
+    jsonp iframe img
+    window.name
+    domain.
+
+17、ajax请求json数据后如何解析
+    content：
+    dateType:返回来的数据以什么解析
+    mimeType:text/html
+    context:this指向（上下文）
+    contentType:设置请求的mime.type默认为表单提交
+    headers:自定义请求首部
+
+18、Ajax readyState的五种状态,分别是0,1,2,3,4请说明他们对应的意思
+    0:未初始化 未调用open方法
+    1:已经打开open方法 未调用send
+    2:开始接收响应头 可以获取服务器时间
+    3：开始接收响应主体
+    4：全部接收完数据
+19、你如何从浏览器的URL中获取参数信息
+    <!--
+      页面之间的通信：A页面、B页面，我需要在B页面中获取到A页面中的一些信息
+        ->URL传参:从A页面跳转到B页面,我们把A页面的一些操作信息通过地址栏URL问号传参的方式传递给B页面，这样的话B页面就可以获取到A页面中的操作信息了，获取到不同的信息进行不同的操作...(列表跳转详细基本上都是这样的操作步骤)
+
+        ->IFRAME:嵌套,我们可以在A页面中把B页面嵌套进来,然后利用一些IFRAME提供的方法获取到B页面中的内容等(目前IFRAME的应用正在逐步减少)
+
+        ->本地存储:客户端访问一个页面,把一些信息存储到客户端浏览器中(其实就是存到客户的本地了)
+    -->
+    <script type="text/javascript">
+        var str = "http://kbs.sports.qq.com/kbsweb/game.htm?mid=100000:1468573&name=kbs#nba";//->这个就是B页面地址栏中的地址,我们需要获取的是{mid:"100000:1468573",name:"kbs"}
+
+        //->第一种解决方案:字符串的截取和拼接
+        //    var strIndex = str.indexOf("?"),
+        //            endIndex = str.lastIndexOf("#"),
+        //            resStr = "";
+        //    if (strIndex > -1) {
+        //        if (endIndex === -1) {
+        //            resStr = str.substring(strIndex + 1);
+        //        } else {
+        //            resStr = str.substring(strIndex + 1, endIndex);
+        //        }
+        //    }
+        //    var ary = resStr.split("&"),
+        //            obj = {};
+        //    for (var i = 0; i < ary.length; i++) {
+        //        var cur = ary[i],
+        //                curAry = cur.split("=");
+        //        obj[curAry[0]] = curAry[1];
+        //    }
+        //    console.log(obj);
+
+        //->正则处理
+        var obj = {};
+        str.replace(/([^?=&#]+)=([^?=&#]+)/g, function () {
+            obj[arguments[1]] = arguments[2];
+        });
+        console.log(obj);
+
+        //->对于传递过来的参数值,我们首先需要确定是否进行了编码(如果传递过来的参数值出现中文或者其他的特殊符号...我们一般都会进行编码),如果编码了需要先解码然后在解析
+        //encodeURIComponent()
+        //decodeURIComponent()
+
+20、为什么利用多个域名来存储网站资源会更有效
+
+三个最主流的原因:
+1. CDN缓存更方便
+2. 突破浏览器并发限制 (你随便挑一个 G家的 url: https://lh4.googleusercontent.com/-si4dh2myPWk/T81YkSi__AI/AAAAAAAAQ5o/LlwbBRpp58Q/w497-h373/IMG_20120603_163233.jpg, 把前面的 lh4换成 lh3,lh6啥的，都照样能够访问，像地图之类的需要大量并发下载图片的站点，这个非常重要。)  多个服务器
+3. Cookieless, 节省带宽，尤其是上行带宽 一般比下行要慢。。。
+
+还有另外两个非常规原因:
+4. 对于UGC的内容和主站隔离，防止不必要的安全问题( 上传js窃取主站cookie之类的) 。
+正是这个原因要求用户内容的域名必须不是自己主站的子域名，而是一个完全独立的第三方域名。
+
+5. 数据做了划分，甚至切到了不同的物理集群，通过子域名来分流比较省事. ^_^ 这个可能被用的不多。
+
+21、TCP/IP五层模型的协议分别是哪五层?
+    物理层 主要是处理一些物理的 如电压  电流等
+
+    数据链路层  如 交换机
+
+    网络层 主要是路由的 如路由器
+
+    传输层 主要是建立可靠的连接的
+
+    应用层是应用程序接口
+
+
+
+
+
+
+
+
+
+
+
+
+

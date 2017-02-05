@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+         .box{
+             display: table;
+             width:100%;
+         }
+         .left,.right,.center{
+             display: table-cell;
+             height:300px;
+         }
+         .left,.right{
+             width: 200px;
+         }
+         .left,.right{
+             background: lime;
+         }
+         .center{
+             background: lightcoral;
+         }
+
+
+    </style>
+</head>
+<body><!--ie67不支持-->
+<div class="box">
+    <div class="left">Left</div>
+    <div class="center">Center</div>
+    <div class="right">Right</div>
+</div>
+</body>
+</html>

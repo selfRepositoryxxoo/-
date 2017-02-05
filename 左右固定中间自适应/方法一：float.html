@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            min-width: 500px;
+        }
+        .left{
+            float: left;
+        }
+        .left,.right{
+            width: 200px;
+            opacity: .5;
+            background: lime;
+        }
+        .left,.center,.right{
+            height: 300px;
+        }
+        .center{
+            margin:0 200px;
+            background: lightcoral;
+        }
+        .right{
+            float: right;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<!--面试常会问道  左边右边固定200px  中间自适应 怎么搞？
+  这边需要注意的是 center位置是在最后面的
+-->
+<div class="box">
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+    <div class="center">Center</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    function quickSort(ary){
+        if(ary.length<=1){
+            return ary;
+        }
+        var pointIndex=Math.floor(ary.length/2);
+        var pointValue=ary.splice(pointIndex,1)[0];
+        var left=[];
+        var right=[];
+        for(var i=0;i<ary.length;i++){
+            var cur=ary[i];
+            cur>pointValue?right.push(cur):left.push(cur)
+        }
+        return quickSort(left).concat([pointValue],quickSort(right))
+    }
+    var ary=[12,13,6,2,45];
+    console.log(quickSort(ary))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

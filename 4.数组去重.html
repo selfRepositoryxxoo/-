@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [3, 3, 3, 55, 5, 7];
+    //第一种 原型扩展 利用对象的概念
+    Array.prototype.unique = function () {
+        var obj = {};
+        for (var i = 0; i < this.length; i++) {
+            var cur = this[i];
+            if (obj[cur] == cur) {
+                this[i] = this[this.length - 1];
+                this.length--;
+                i--;
+            }
+            obj[cur] = cur
+        }
+        obj = null;
+        return this
+    }
+    console.log(ary.unique())
+    //第二种 利用两个for循环
+    var ary = [3, 3, 6, 6, 6, 6, 6, 55, 5, 7];
+    Array.prototype.unique = function () {
+        for (var i = 0; i < this.length - 1; i++) {
+            for (var j = i + 1; j < this.length; j++) {
+                if (this[i] == this[j]) {
+                    this.splice(i, 1)
+                    i--
+                }
+            }
+        }
+        return this
+    }
+    console.log(ary.unique())
+    //第三种
+    var ary = [7, 7, 7, 7, 7, 6, 6, 6, 6];
+/*    Array.prototype.unique = function () {
+        var ary = [];
+        for (var i = 0; i < this.length; i++) {
+            var cur = this[i];
+            console.log(cur)
+            if (ary.indexOf(cur) >= -1) {
+                /!*   console.log(cur)*!/
+                this.splice(i, 1)
+                i--;
+            }
+            ary.push(cur)
+        }
+        return this;
+    }*/
+ /*   console.log(ary.unique())*/
+    Array.prototype.unique = function () {
+        var ary = [];
+        for (var i = 0; i < this.length; i++) {
+            var cur = this[i];
+            console.log(cur)
+            if (ary.indexOf(cur) == -1) {
+                ary.push(cur)
+            }
+            this.splice(i, 1);
+            i--;
+        }
+        return ary;
+    }
+    console.log(ary.unique())
+</script>

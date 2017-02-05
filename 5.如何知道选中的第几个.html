@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="">
+    <input type="radio" name="yy" />
+    <input type="radio" name="yy"/>
+    <input type="radio" name="yy"/>
+    <input type="radio" name="yy"/>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+    var inputs=document.getElementsByName('yy');
+    for(var i=0;i<inputs.length;i++){
+        ~function(index){
+            inputs[index].onclick=function(){
+                alert('我是第'+(index+1)+'个')
+            }
+        }(i)
+    }
+
+
+</script>

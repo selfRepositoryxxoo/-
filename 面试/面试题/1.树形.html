@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="a"></div>
+<script type="text/javascript">
+    var arr = new Array();
+    var arr1 = {uId:"1",uName:"name1",uPass:"pass1",parentId:"0"};
+    arr.push(arr1);
+    var arr2 = {uId:"2",uName:"name2",uPass:"pass2",parentId:"1"};
+    arr.push(arr2);
+    var arr3 = {uId:"3",uName:"name3",uPass:"pass3",parentId:"1"};
+    arr.push(arr3);
+    var arr4 = {uId:"4",uName:"name4",uPass:"pass4",parentId:"2"};
+    arr.push(arr4);
+    var arr5 = {uId:"5",uName:"name5",uPass:"pass5",parentId:"3"};
+    arr.push(arr5);
+    var arr6 = {uId:"6",uName:"name6",uPass:"pass6",parentId:"3"};
+    arr.push(arr6);
+    var arr7 = {uId:"7",uName:"name7",uPass:"pass7",parentId:"2"};
+    arr.push(arr7);
+    var str = "";
+    for(var i=0;i<arr.length;i++){
+        if(arr[i].parentId=="0"){
+            str = str+arr[i].uName+"<br/>";
+            for(var j=0;j<arr.length;j++){
+                if(arr[j].parentId==arr[i].uId){
+                    str = str+"  |--"+arr[j].uName+"<br/>";
+                    for(var k=0;k<arr.length;k++){
+                        if(arr[k].parentId==arr[j].uId){
+                            str = str+"      |--"+arr[k].uName+"<br/>";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    document.getElementById("a").innerHTML = str;
+</script>
+</body>
+</html>

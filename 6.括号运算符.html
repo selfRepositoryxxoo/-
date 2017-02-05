@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var  obj={fn:fn};
+    function fn(){
+        console.log(this)
+    }
+    obj.fn();//obj
+    (obj.fn)();//obj
+    (1,obj.fn)();//经过括号运算符,只能获得最后一个数的值，
+
+
+
+</script>
+

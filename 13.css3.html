@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+            -webkit-transition: all 1s linear 0s;
+            transition: all 1s linear 0s;
+
+        }
+        #box:hover{
+            -webkit-transform:scale(2);
+            transform:scale(2);
+        }
+        @media all  and (max-width: 500px){
+            #box{
+                -webkit-transform: scale(2);
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

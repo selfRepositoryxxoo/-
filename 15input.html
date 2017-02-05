@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="number"  id="box1" value="10"/>
+<input type="number"  id="box2"/>
+</body>
+</html>
+<script>
+    //移动是没有 各种事件的只有input这个事件
+    var box1=document.querySelector('#box1');
+    var box2=document.querySelector('#box2');
+    box1.addEventListener('input',function(){
+        box2.value=this.value
+    },false)
+
+
+
+
+</script>

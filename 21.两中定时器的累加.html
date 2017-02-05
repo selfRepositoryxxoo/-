@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var count=0;
+ /*   var time=setInterval(function(){
+        count++
+        console.log(count)
+        if(count==10){
+            clearInterval(time)
+        }
+    },1000)*/
+    //利用setTimeout实现
+
+    function move(){
+        clearTimeout(time)
+        count++
+        console.log(count)
+        if(count==10) {
+            return
+        }
+        var time=setTimeout(move,1000)
+    }
+    move()
+
+
+
+
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var obj1 = {attr1: 0, attr2: 0, attr3: 0, attr4: 0}
+    var obj3 = {attr1: 0, attr2: 2, attr3: 0, attr4: 0, attr5: 0}
+    var obj2 = {attr1: 0, attr2: 0, attr3: 0, attr4: 0, attr5: 0, attr6: 0};
+    var ary = [obj1, obj2, obj3];
+    /*
+     var ary1=[]
+     for(var i=0;i<ary.length;i++){
+     var cur=ary[i];
+     var flag=1;
+     for(var n in cur){
+     flag++;
+     }
+     ary1.push(flag)
+     }
+     console.log(ary1)
+     */
+    ary.sort(function () {
+        for (var i = 0; i < 2; i++) {
+            arguments[i].length = 0;
+            for (var att in arguments[i]) {
+                if (arguments[i].hasOwnProperty(att)) {
+                    arguments[i].length++
+                }
+            }
+        }
+        return arguments[0].length - arguments[1].length
+    })
+
+    console.log(ary)
+
+
+</script>

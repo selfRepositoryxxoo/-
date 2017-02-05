@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            /*为什么只有这样才可以设置*/
+            height: 100px;
+        }
+
+        /*为什么脱离文档流之后的告诉是不用继承的  定位脱离的文档流是不用需要继承的
+        但是通过float 的高度好像好像是需要继承的*/
+        .left, .right {
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            top: 0;
+        }
+
+        .left {
+            left: 0;
+            background: red;
+        }
+
+        .right {
+            right: 0;
+            background: darkorange;
+        }
+
+        .center {
+            /* width: 100px;*/
+            margin: 0 200px;
+            background: darkcyan;
+            height: 100%; /*因为我们写的100%父级必须有高度才可以 不是因为我们设置了height就 可以把这个父级的盒子撑起来  假如是100px的肯定能把父级的撑起来 但是我们用的是100%，就是要继承父级的height所以父级必须设置告height*/
+        }
+    </style>
+</head>
+<body>
+<div class="left"></div>
+<div class="center"></div>
+<div class="right"></div>
+</body>
+</html>

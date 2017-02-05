@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+              position: relative;
+              min-width: 500px;
+          }
+          .left{
+              left:0;
+          }
+          .center{
+              margin: 0 200px;
+              height: 300px;
+              background: lightcoral;
+          }
+          .right {
+              right: 0;
+          }
+          .left,.right{
+              position: absolute;
+              width: 200px;
+              height: 300px;
+              background: lime;
+              opacity: .5;
+          }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+    <div class="center">Center</div>
+</div>
+</body>
+</html>

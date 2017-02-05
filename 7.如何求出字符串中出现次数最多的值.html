@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script type="text/javascript">
+    var str = 'iiiuuyyyeeemm000';
+
+    String.prototype.max = function () {
+        var reg = /\w/g;
+        var obj = {};
+        this.replace(reg, function () {
+            obj[arguments[0]] ? obj[arguments[0]] +=1 :  obj[arguments[0]] =1
+        })
+        var max=1;
+        for(var n in obj){
+            if(obj[n]>=max){
+                max=obj[n]
+            }
+        }
+        var ary=[]
+        for(var n in obj){
+            if(obj[n]==max){
+                ary.push(n)
+            }
+        }
+        return ary.join('')
+    }
+    console.log(str.max())
+</script>

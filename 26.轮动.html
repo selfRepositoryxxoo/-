@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{
+            width: 100px;
+            height: 50px;
+            display: block;
+            margin-top: 30px;
+            position: absolute;
+            left: 0;
+        }
+        .box span:nth-child(1){
+            background: red;
+            top: 100px;
+        }
+        .box span:nth-child(2){
+            background: red;
+            top: 200px;
+        }
+        .box span:nth-child(3){
+            background: red;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</body>
+</html>
+<script>
+    var spans=document.querySelectorAll('span');
+    for(var i=0;i<spans.length;i++){
+        ~function(i){
+            setTimeout(function(){
+                spans[i].style.left=i*100+'px'
+            },i*1000)
+        }(i)
+    }
+
+
+
+
+
+</script>

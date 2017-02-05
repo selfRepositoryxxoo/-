@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="checkbox">
+<div></div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+<script>
+    var oInput = document.getElementsByTagName('input');
+  /*  oInput= [...oInput].filter(function (item, index) {
+        return item.type=='checkbox';
+    })*/
+    oInput1= Array.from(oInput).filter(function (item, index) {
+        return item.type=='checkbox';
+    })
+    oInput= Array.from(oInput).find(function (item, index) {
+        return item.type=='checkbox';//只能发现一个
+    })
+    console.log(oInput);
+    console.log(oInput1);
+    $("input:checkbox").css("width","300");
+</script>
+</body>
+</html>

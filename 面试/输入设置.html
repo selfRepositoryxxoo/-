@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="ctrl">
+    <textarea name="" id="" cols="30" rows="10" ng-model="count" placeholder="总共可以输入200字"></textarea>
+    <p ng-show="result>=0">还剩余{{result}}字</p>
+    <p ng-show="result<0">请删除{{more}}字</p>
+    <input type="submit" ng-model="btn" ng-disabled="result<=0"/>
+</div>
+<script src="angular.js"></script>
+<script>
+    //创建模块，
+    var app = angular.module('appModule', []);
+    app.controller('ctrl', function ($scope) {
+        $scope.$watch('count', function (newV, oldV) {
+            if (newV) {
+                $scope.result = 20 - newV.length;
+                if (newV.length >= 20) {
+                    $scope.more =newV.length-20;
+                }
+            }
+            if (typeof  newV == 'undefined' || newV == '') {
+                $scope.result = 20
+            }
+        });
+    });
+</script>
+</body>
+</html>

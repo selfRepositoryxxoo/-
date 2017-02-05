@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #content {
+            border: 1px solid palegreen;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="ctrl">
+    <textarea name="" id="" cols="30" rows="10" ng-model="count" placeholder="总共可以输入200字"></textarea>
+
+    <p ng-show="result>=0">还剩余{{result}}字</p>
+
+    <p ng-show="result<0">请删除{{more}}字</p>
+    <input type="submit" ng-model="btn" ng-disabled="result<=0" ng-click="addCon(count)"/>
+
+    <div id="content" ng-show="arr.length>0">
+        <p  ng-repeat="a in arr track by $index">{{a}}</p>
+    </div>
+</div>
+<script src="angular.js"></script>
+<script>
+    var app = angular.module('appModule', []);
+    app.controller('ctrl', function ($scope) {
+        $scope.$watch('count', function (newV, oldV) {
+            if (newV) {
+                $scope.result = 20 - newV.length;
+                if (newV.length >= 20) {
+                    $scope.more = newV.length - 20;
+                }
+            }
+            if (typeof  newV == 'undefined' || newV == '') {
+                $scope.result = 20
+            }
+        });
+        $scope.arr = [];
+        $scope.addCon = function (content) {
+            if(content===''||content===undefined||content=== null)return;
+            $scope.arr.unshift(content);
+            console.log($scope.arr);
+            $scope.count = null;
+        }
+    });
+</script>
+</body>
+</html>

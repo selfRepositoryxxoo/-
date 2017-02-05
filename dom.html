@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body,ul{margin: 0px;padding: 0px;}
+	li{list-style: none;}
+	#ul1{width: 700px;margin: 0px auto;}
+	#ul1:before{content: "";display: block;width: 0px;height: 2450px;border-left: 1px dashed #000;position: absolute;top: 10px;}
+	#ul1 li{width: 626px;height: 400px;background: #ccc;position: relative;margin:0px 0px 10px 30px;}
+	#ul1 li span{position: absolute;width: 40px;height: 40px;border:1px solid red;border-radius: 50%;left: -50px;top: 10px;text-align: center;line-height: 40px;background: pink;}
+	#ul1 li .a{position: fixed;}
+	#ul1 li .b{position: absolute;}
+	</style>
+</head>
+<body>
+	<ul id="ul1">
+		<li><span>1</span></li>
+		<li><span>2</span></li>
+		<li><span>3</span></li>
+		<li><span>4</span></li>
+		<li><span>5</span></li>
+		<li><span>6</span></li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	var $aSpan=$('#ul1').find('span');
+	var $aLi=$('#ul1').find('li');
+	var arr=[];
+	$aSpan.each(function(i,ele){
+		arr.push([$(ele).offset().left,$(ele).offset().top]);
+	});
+	$(window).scroll(function(){
+		var iScroll=$(document).scrollTop();
+		$aLi.each(function(i,ele){
+			if($(ele).offset().top<iScroll+i*40){
+				$aSpan.eq(i).addClass('a').css({'left':arr[i][0],'top':i*45});
+			}else{
+				$aSpan.eq(i).removeClass('a').css({'left':'','top':''});
+			}
+		})
+	})
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    //提示原型扩展
+    Array.prototype.quickSort=function(){
+        if(this.length<=1){
+            return this
+        }
+        var index=Math.floor(this.length/2);
+        var value=this.splice(index,1)[0];
+        var left=[];
+        var right=[];
+        for(var i=0;i<this.length;i++){
+            var cur=this[i]
+            cur>value?right.push(cur):left.push(cur)
+        }
+        return left.quickSort().concat([value],right.quickSort())
+    }
+
+    var ary=[3,5,6,7,8,3,3,4,5,6,56,56,34,57,56,7,5]
+    console.log(ary.quickSort())
+
+
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var obj1 = {a1: 1, a2: 1, a3: 1, a4: 1, a5: 1, a6: 1};
+    var obj2 = {a1: 1, a2: 1, a3: 1, a4: 1, a5: 1, a6: 1, a7: 1};
+    var obj3 = {a1: 1, a2: 1, a3: 1, a4: 1, a5: 1, a6: 1, a7: 1, a8: 1};
+    var ary = [obj3, obj2, obj1];
+    //sort的运行原理就是 每次就是需要两个参数进行比较所以arguments是固定的
+    ary.sort(function () {
+        for (var i = 0; i < 2; i++) {
+            arguments[i].length = 0;
+            for (var n in  arguments[i]) {
+                if (arguments[i].hasOwnProperty(n)) {
+                    arguments[i].length++
+                }
+            }
+        }
+        return arguments[0].length - arguments[1].length
+    })
+    console.log(ary)
+
+
+</script>

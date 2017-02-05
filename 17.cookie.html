@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    //escape  里面的东西必须有空格 否则是不可以的
+    document.cookie = 'userID=' + escape("yang chong duo");
+    document.cookie = 'uesrName=yangchongduo'
+    var str = document.cookie;
+    console.log(typeof str)
+    console.log(str)
+    var ary = str.split(';');
+    var obj = {};
+    for (var i = 0; i < ary.length; i++) {
+        var reg = /^([^=]+)=([^=]+)$/g
+        ary[i].replace(reg, function () {
+            obj[arguments[1]] = arguments[2]
+        })
+    }
+    console.log(obj)
+
+
+</script>

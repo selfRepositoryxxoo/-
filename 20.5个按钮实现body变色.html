@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+     body{
+         width: 100%;
+         height: 100%;
+         overflow-x: hidden;
+     }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+</body>
+</html>
+<script>
+
+    var bts=document.querySelectorAll('button');
+    var ary=['darkorange','lightblue','darkgray','darkcyan','darkgrey'];
+    for(var i=0;i<bts.length;i++){
+        ~function(index){
+            bts[index].onclick=function(){
+                document.body.style.backgroundColor=ary[index]
+            }
+        }(i)
+    }
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{position: relative;}
+    </style>
+</head>
+<body>
+<div class="div1">
+    <input id="first" type="button" value="first button" drag = "0"/>
+    <div class="div2" style="height: 100px; background-color: #6633FF; width: 100px;"></div>
+    <input id="second" type="button" value="second button" drag = "1"/>
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var flag = false;
+        $('input').mousedown(function(){
+            var $nowElement = $(this);
+            $(this).attr("drag", 1);
+            flag = true;
+            $(document).mousemove(function(event){
+                if(flag && $nowElement.attr("drag") == 1){
+                    var x = event.clientX;
+                    var y = event.clientY;
+                    if($nowElement.attr("id") == "first"){
+                        $('#first').css({"left": x, "top": y});
+                    }else{
+                        $('#second').css({"left": x, "top": y - 122 + "px"});
+                    }
+                    $('.div2').css("width", x);
+                }else{
+                    return;
+                }
+            });
+            $(document).mouseup(function(){
+                flag = false;
+                $nowElement.attr("drag", 0);
+            });
+        });
+    });
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    var str = '10000000000000000';
+    String.prototype.qian = function () {
+        let reg = /^([1-9]\d{0,2})((\d{3})+)$/;
+        let str = this.replace(reg, function () {
+            return RegExp.$1 + ',' + RegExp.$2.match(/\d{3}/g)
+        })
+        return str
+    }
+    console.log(str.qian())
+    var str='000000000000000';
+    let reg=/\d{3}/g
+    str.match(reg,function(){
+
+    })
+
+
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    //在此说明 replace是需要一个接受值
+    String.prototype.trim = function () {
+        var reg = /^ +| +$/g
+        return this.replace(reg, '')
+    }
+    var str = '  hjkh  ';
+    var str1='jkhk'
+    console.log(str)
+    console.log(str1)
+    var str2=str.trim()
+    console.log(str2)
+
+    var str='abcdefghi';
+    var reg=/[c-e]/g;
+    var count=0
+    var str3=str.replace(reg,function(){
+        return count++
+    })
+    console.log(str3)
+
+
+</script>
+
+

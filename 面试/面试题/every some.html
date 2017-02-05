@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array .some() and .every()</title>
+</head>
+<body>
+<script>
+  /*  测试了一下这个三个函数的区别
+
+    forEach是会从头循环到未，你无法控制
+
+    some中回调函数返回为true，就终止循环了
+
+    every中回调函数返回为false，则终止循环*/
+
+
+    var arrData = ['a','b','c'];
+  arrData.forEach( function(item, index, arr){
+        console.log("foreach arrData[" + index + "]=" + item);
+        return true;//不支持返回值
+    });
+  arrData.some(function(item, index, arr){
+        console.log("someFalse arrData[" + index + "]=" + item);
+        return false;
+    });
+  arrData.some( function(item, index, arr){
+        console.log("someTrue arrData[" + index + "]=" + item);
+        return true;
+    });
+  arrData.every( function(item, index, arr){
+        console.log("everyFalse arrData[" + index + "]=" + item);
+        return false;
+    });
+  arrData.every( function(item, index, arr){
+        console.log("everyTrue arrData[" + index + "]=" + item);
+        return true;
+    });
+</script>
+</body>
+</html>

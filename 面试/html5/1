@@ -1,0 +1,120 @@
+1、form中input可以设置readyonly和disable,请问这两项有什么区别
+
+   Readonly只针对input(text / password)和textarea有效，而disabled对于所有的表单元素都有效，包括select, radio, checkbox, button等。但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去(这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit button却是可以使用的)。
+
+2、说说data和atrribute的区别
+   通过data-设置属性
+   通过dataset来获取属性
+   var div = document.getElementById（’div‘）
+   if(div.dataset){
+       alert(div.dataset.name)
+   }else{
+      alert（div.getAttribute('data-name'));
+   }
+3、.htm5存储类型有什么区别
+    1、localStorage 适用于长期存储数据，浏览器关闭后数据不丢失
+    2、sessionStorage 存储的数据在浏览器关闭后自动删除
+
+4、HTML5中对于表单元素的升级(在IE6~8下不兼容):
+  ->给表单元素增加了一个叫做placeholder的属性,用来设置默认的提示信息
+  ->给INPUT增加了很多新的类型：search、url、email、tel、number、range、color、date、time...(PC端目前使用新类型的不多,主要原因就是无法处理IE下的兼容;但是移动端这些类型中的部分是必用的;)
+    1)根据不同的类型,手机会调取出最符合用户输入的虚拟键盘,方便用户的输入不需要在切换键盘一个个找需要的字符了...
+    2)增加了CSS和JS新的验证方式(移动端的keyup/keydown用input事件代替)
+5、新的HTML5文档类型和字符集是?
+   utf-8
+   gb2312
+   gbk
+   http://www.imooc.com/article/2673
+6、html5应用程序缓存和浏览器缓存有什么区别?
+离线浏览 - 用户可在应用离线时使用它们
+速度 - 已缓存资源加载得更快
+减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
+？？？？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

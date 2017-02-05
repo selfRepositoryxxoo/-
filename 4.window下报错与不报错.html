@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body></body>
+</html>
+<script>
+    //属性是不报错的，变量才会报错的
+    var obj = {
+        num: function () {
+            console.log(this.content)//没有找到window中的content
+        }()
+    }
+
+    var obj = {
+        num: function () {
+            console.log(content)//没有找到window中的content
+        }()
+    }
+
+</script>

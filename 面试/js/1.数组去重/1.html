@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function sunUnique(array) {
+        var ary = [];
+        array.forEach(function (element) {
+            var find = ary.find(function (ele) {//find只能运行一次
+
+                return (ele.value == element)
+            });
+            console.log(find)
+            if (find) {
+                find.dd = true
+            } else {
+                ary.push({
+                    value: element,
+                    dd: false
+                })
+            }
+        });
+        return ary.filter(function (ele) {
+            return !ele.dd
+        }).map(function (ele) {
+            return ele.value
+        }).reduce(function (left, right) {
+            return left + right
+        })
+    }
+    var ary=[3,3,3,7,8,9,3,3,3];
+    console.log(sunUnique(ary))
+
+
+
+</script>
