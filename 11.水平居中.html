@@ -1,41 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        .box {
-            /*这个确实兼容所有的浏览器*/
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -50px;
-            margin-top: -50px;
-            background: darkorange;
-            border-radius: 50%;
+<html lang="en">
 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		
 
-        }
+		/* .div {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		} */
 
-        /*       .box{
-                   width: 100px;
-                   height: 100px;
-                   position: absolute;
-                   left: 0;
-                   top: 0;
-                   bottom: 0;
-                   right: 0;
-                   margin: auto;
-                   background: red;
-                   border-radius: 50%;
-               }*/
+		/* 第二种方式 */
 
+		/* .div {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			background: rebeccapurple;
+			margin-left: -50px;
+			margin-top: -50px;
+		} */
 
-    </style>
+		/* flex 需要先制定容器 */
+
+		html,
+		body {
+			display: flex;
+			align-items: center;
+			/* 垂直居中 */
+			justify-content: center;
+			/* 水平居中 */
+			width: 100%;
+			height: 100%;
+		}
+
+		.div {
+			width: 100px;
+			height: 100px;
+			background: rebeccapurple;
+		}
+	</style>
 </head>
+
 <body>
-<div class="box"></div>
+	<div class="div"></div>
 </body>
+
 </html>
